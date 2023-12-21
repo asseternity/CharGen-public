@@ -2,7 +2,7 @@
 
 This character generator will focus on creativity in creating characters, and not just stats.
 
-https://asseternity.github.io/chargen/#
+Currently solving: random youtube music video generation.
 
 Thanks, 
 

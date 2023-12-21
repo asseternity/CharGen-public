@@ -90,6 +90,11 @@ document.getElementById('drop_lowest_button').addEventListener('click', function
 
 document.getElementById('random_song').addEventListener('click', function(event) {
     const clientId = '537588358050-l48eblvul4cmu7g1af01aq3mulenpndv.apps.googleusercontent.com';
+    const redirectUri = 'https://asseternity.github.io';
+    const authorizationEndpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+    const responseType = 'token';
+    const scope = 'https://www.googleapis.com/auth/youtube.readonly';
+    const authUrl = `${authorizationEndpoint}?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=${responseType}&scope=${encodeURIComponent(scope)}&state=${encodeURIComponent(playlistId)}`;
     const playlistRoster = [
         'PLI_TwOrHUsI8MQNW0BvBAwwHYKgyiiiDB', 
         'PLWUuMxUJvnuKDF9DncRGZPKssW0G7uyLi', 
@@ -103,6 +108,8 @@ document.getElementById('random_song').addEventListener('click', function(event)
     const playlistId = playlistRoster[randomIndex];
     const maxResults = 1000;
     const apiUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=${maxResults}&key=${clientId}`;
+
+    window.location.href = authUrl;
 
     fetch(apiUrl, {
         headers: {
